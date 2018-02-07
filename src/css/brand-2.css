@@ -1,0 +1,7 @@
+:root {
+  --primary: moccasin
+}
+
+body {
+  background-color: var(--primary);
+}

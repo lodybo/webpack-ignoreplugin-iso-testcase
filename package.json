@@ -12,11 +12,14 @@
   "author": "Lody Borgers <l.borgers@taf.nl> (https://www.lodybo.nl)",
   "license": "ISC",
   "dependencies": {
+    "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
     "postcss": "^6.0.17",
+    "postcss-css-variables": "^0.8.0",
     "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.0.0",
     "postcss-loader": "^2.1.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
