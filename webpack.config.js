@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -24,7 +25,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: path.join(__dirname, 'src', 'css', 'base.css'),
+        test: path.join(__dirname, 'src', 'css', 'base-theme.css'),
         use: baseStyle.extract({
           use: [
             { loader: 'css-loader', options: { importLoaders: 1 } },
@@ -33,7 +34,7 @@ module.exports = {
         })
       },
       {
-        test: path.join(__dirname, 'src', 'css', 'brand-1.css'),
+        test: path.join(__dirname, 'src', 'css', 'brand1-theme.css'),
         use: brand1Style.extract({
           use: [
             { loader: 'css-loader', options: { importLoaders: 1 } },
@@ -42,7 +43,7 @@ module.exports = {
         })
       },
       {
-        test: path.join(__dirname, 'src', 'css', 'brand-2.css'),
+        test: path.join(__dirname, 'src', 'css', 'brand2-theme.css'),
         use: brand2Style.extract({
           use: [
             { loader: 'css-loader', options: { importLoaders: 1 } },
@@ -55,13 +56,14 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin('dist'),
-    // new ExtractTextPlugin('css/[name].css'),
     baseStyle,
     brand1Style,
     brand2Style,
     new HtmlWebpackPlugin({
-      title: 'TAF Styleguide experiment with Webpack and PostCSS'
-    })
+      title: 'TAF Styleguide experiment with Webpack and PostCSS',
+      excludeAssets: /.*.css/
+    }),
+    new HtmlWebpackExcludeAssetsPlugin()
   ],
 
   output: {
