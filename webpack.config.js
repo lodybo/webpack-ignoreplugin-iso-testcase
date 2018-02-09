@@ -5,15 +5,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const DiscardAssetPlugin = require('./discard-asset-webpack-plugin');
 
-const baseStyle = new ExtractTextPlugin('styles/base.css');
-const brand1Style = new ExtractTextPlugin('styles/brand1.css');
-const brand2Style = new ExtractTextPlugin('styles/brand2.css');
+const baseStyle = new ExtractTextPlugin('styles/base-theme.css');
+const brand1Style = new ExtractTextPlugin('styles/brand1-theme.css');
+const brand2Style = new ExtractTextPlugin('styles/brand2-theme.css');
 
 
 module.exports = {
   entry: {
     'app': path.join(__dirname, 'src', 'app.js'),
+    'themes': path.join(__dirname, 'src', 'themes.js')
   },
 
   devtool: 'inline-source-map',
@@ -61,9 +63,14 @@ module.exports = {
     brand2Style,
     new HtmlWebpackPlugin({
       title: 'TAF Styleguide experiment with Webpack and PostCSS',
-      excludeAssets: /.*.css/
+      excludeAssets: [/.*.css/, /themes.*.js/],
+      minify: false,
+      template: path.join(__dirname, 'src', 'index.tpl.html')
     }),
-    new HtmlWebpackExcludeAssetsPlugin()
+    new DiscardAssetPlugin({
+      discardPatterns: [/themes.*.js/]
+    }),
+    new HtmlWebpackExcludeAssetsPlugin(),
   ],
 
   output: {

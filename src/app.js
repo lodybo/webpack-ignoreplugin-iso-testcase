@@ -1,3 +1,11 @@
-import './css/base-theme.css';
-import './css/brand1-theme.css';
-import './css/brand2-theme.css';
+const branding = document.querySelector('#branding-style');
+
+switch (location.hostname) {
+  case 'www.base.com':
+    branding.setAttribute('href', 'styles/base-theme.css');
+    break;
+  
+  case 'www.taf.com':
+    branding.setAttribute('href', 'styles/brand1-theme.css');
+    break;
+}
