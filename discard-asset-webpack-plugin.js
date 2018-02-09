@@ -26,8 +26,9 @@ function canDiscard(assetPath, discardPatterns) {
  *
  * @param {RegExp|Array} discardPatterns - RegExp pattern(s) to ignore
  */
-function DiscardAssetPlugin(options) {
-    this.discardPatterns = options.discardPatterns;
+function DiscardAssetPlugin(discardPatterns) {
+    // this.discardPatterns = options.discardPatterns;
+    this.discardPatterns = discardPatterns;
 }
 
 DiscardAssetPlugin.prototype.apply = function(compiler) {

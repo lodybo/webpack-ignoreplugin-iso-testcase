@@ -5,7 +5,7 @@ switch (location.hostname) {
     branding.setAttribute('href', 'styles/base-theme.css');
     break;
   
-  case 'www.taf.com':
+  case 'www.brand1.com':
     branding.setAttribute('href', 'styles/brand1-theme.css');
     break;
 }

@@ -6,6 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%= htmlWebpackPlugin.options.title %></title>
   <link id="branding-style" rel="stylesheet" href="" />
+  <style>
+    body::after {
+      content: 'Loading..';
+      font-size: 5em;
+      position: absolute;
+      top: 40%;
+      left: 40%;
+    }
+  </style>
 </head>
 <body>
   

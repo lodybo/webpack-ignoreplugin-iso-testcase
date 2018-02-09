@@ -5,3 +5,7 @@ html, body {
 body {
   background-color: var(--primary);
 }
+
+body::after {
+  content: '' !important;
+}

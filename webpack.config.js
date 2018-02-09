@@ -58,19 +58,20 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin('dist'),
+    new webpack.IgnorePlugin(/themes\.js/),
     baseStyle,
     brand1Style,
     brand2Style,
     new HtmlWebpackPlugin({
-      title: 'TAF Styleguide experiment with Webpack and PostCSS',
+      title: 'Branding Styleguide experiment with Webpack and PostCSS',
       excludeAssets: [/.*.css/, /themes.*.js/],
       minify: false,
       template: path.join(__dirname, 'src', 'index.tpl.html')
     }),
-    new DiscardAssetPlugin({
-      discardPatterns: [/themes.*.js/]
-    }),
-    new HtmlWebpackExcludeAssetsPlugin(),
+    // new DiscardAssetPlugin({
+    //   discardPatterns: [/themes.*.js/]
+    // }),
+    new HtmlWebpackExcludeAssetsPlugin()
   ],
 
   output: {

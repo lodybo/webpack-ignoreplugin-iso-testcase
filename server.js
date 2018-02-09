@@ -8,6 +8,6 @@ const compiler = webpack(require('./webpack.config'));
 const app = express();
 
 app.use(vhost('www.base.com', app.use(middleware(compiler))));
-app.use(vhost('www.taf.com', app.use(middleware(compiler))));
+app.use(vhost('www.brand1.com', app.use(middleware(compiler))));
 
 app.listen(80, () => console.log('Server started..'));
